@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Whisperer = () => {
+const SearchBarTable = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Whisperer = () => {
   )
 }
 
-export default Whisperer
+export default SearchBarTable

@@ -1,17 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { City } from "../../utils/types";
 
-interface CityCoords {
-    lon: number,
-    lat: number,
-}
-
-interface City {
-    id: number,
-    name: string,
-    state: string,
-    country: string,
-    coord: CityCoords,
-}
 
 interface CityState {
     selectedCity: City | null;
