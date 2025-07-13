@@ -1,10 +1,18 @@
 import React from 'react'
 
-const SearchBarTable = () => {
+interface Props<T> {
+    data: T[],
+    display: (item: T) => string;
+    itemKey:(item: T) => string | number
+}
+
+function SearchBarTable<T>({data, display, itemKey}: Props<T>) {
   return (
-    <div>
-      
-    </div>
+    <>
+      {data.map(item => {
+        return <p key={itemKey(item)}>{display(item)}</p>
+      })}
+    </>
   )
 }
 

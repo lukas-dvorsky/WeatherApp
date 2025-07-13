@@ -4,7 +4,7 @@ export interface CityCoords {
 }
 
 export interface City {
-    id: number,
+    id: number | string,
     name: string,
     state: string,
     country: string,

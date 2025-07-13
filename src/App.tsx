@@ -11,8 +11,8 @@ function App() {
       <Whisperer<City> 
         data={cities}
         searchBy={city => city.name}
-        limit={5}
-        placeholder=''
+        display={city => city.name}
+        itemKey={city => city.id}
         />
     </>
   )

@@ -7,14 +7,16 @@ interface Props<T> {
   limit?: number,
   placeholder?: string,
   searchBy: (item: T) => string;
+  display: (item: T) => string;
+  itemKey: (item: T) => string | number
 }
 
-function Whisperer<T>({data, limit = 10, placeholder = "", searchBy}: Props<T>) {
+function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, itemKey}: Props<T>) {
 
   const [isLoading, setIsLoading] = useState(false);
 
   // Deferred input
-  const [input, setInput] = useState('Ostrav')
+  const [input, setInput] = useState('Ostr')
   const deferredInput = useDeferredValue(input);
 
   // Search data in JSON, send data to table.
@@ -43,12 +45,10 @@ function Whisperer<T>({data, limit = 10, placeholder = "", searchBy}: Props<T>) 
     
   }, [deferredInput])
   
-  console.log(filtered)
-
   return (
     <>
       <SearchBar></SearchBar>
-      <SearchBarTable></SearchBarTable>
+      <SearchBarTable data={filtered} display={display} itemKey={itemKey}></SearchBarTable>
     </>
   )
 }
