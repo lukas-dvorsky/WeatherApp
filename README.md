@@ -1,69 +1,38 @@
-# React + TypeScript + Vite
+## Weather App
+Weather app allows users to search for cities and view realtime weather information.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies
+TODO: Doplnit
 
-Currently, two official plugins are available:
+React
+TypeScript
+Redux Toolkit
+Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Instalation
+1.
+2.
+3.
 
-## Expanding the ESLint configuration
+## Components
+### Whisperer
+IMG
+Whisperer is made out of two other components (SearchBar, SearchBarTable).
+User input is stored in Whisperer component and is spred out to other components.
+By default 10 items are selected from JSON file based on user input and then are shown in table.
+User can click on item, what happens depends on desired function declared above Whisperer component.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+When user inputs text, first thing that happens is that program is trying to select cities that beggin with that query, then
+program tries to find other cities that include that query.
+Finally these data are combined and sliced based on limit, ready to be displayed.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Searches are stores via useMemo() for better performace.
+For input i choosed useDeferredValue(), to optimize performace when handling fast input changes.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+In our example:
+User is searching cities, on display we can se name of the city and country where city lays. It is because
+a lot cities share the same name, so it is more readable for user.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+When user clicks on city, search bar is cleared out and city is save in store.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Whole component is designed to be reusable for other JSON files.

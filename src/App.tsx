@@ -1,33 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Whisperer from './components/Whisperer/Whisperer'
+import citiesData from '../public/city.list.json'
+import type { City } from './utils/types'
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedCity } from './redux/state/citySlice';
+import type { RootState } from './redux/store';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Save data as array
+  const cities = citiesData as City[];
+  const dispatch = useDispatch()
+
+  const selectedCity = useSelector((state: RootState) => state.city.selectedCity)
+
+  function handleClick(city: City) {
+    dispatch(setSelectedCity(city));
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Whisperer<City> 
+        data={cities}
+        searchBy={city => city.name}
+        display={city => city.name}
+        displaySecond={city => city.country}
+        itemKey={city => city.id}
+        placeholder='Search for city...'
+        onClick={handleClick}
+        />
     </>
   )
 }
