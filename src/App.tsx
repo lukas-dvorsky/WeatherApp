@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Whisperer from './components/Whisperer/Whisperer'
 import citiesData from '../public/city.list.json'
 import type { City } from './utils/types'
@@ -16,8 +15,6 @@ function App() {
   function handleClick(city: City) {
     dispatch(setSelectedCity(city));
   }
-
-  console.log(selectedCity)
 
   return (
     <>
