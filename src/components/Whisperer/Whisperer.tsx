@@ -8,19 +8,22 @@ interface Props<T> {
   placeholder?: string,
   searchBy: (item: T) => string;
   display: (item: T) => string;
+  displaySecond?: (item: T) => string;
   itemKey: (item: T) => string | number
 }
 
-function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, itemKey}: Props<T>) {
+function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, displaySecond, itemKey}: Props<T>) {
 
   const [isLoading, setIsLoading] = useState(false);
 
   // Deferred input
-  const [input, setInput] = useState('Ostr')
+  const [input, setInput] = useState('')
   const deferredInput = useDeferredValue(input);
 
   // Search data in JSON, send data to table.
   const filtered = useMemo(() => {
+    //if(deferredInput === '') return
+
     setIsLoading(true);
 
     const inputLower = deferredInput.toLocaleLowerCase();
@@ -47,8 +50,10 @@ function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, it
   
   return (
     <>
-      <SearchBar></SearchBar>
-      <SearchBarTable data={filtered} display={display} itemKey={itemKey}></SearchBarTable>
+      <SearchBar placeholder={placeholder} inputValue={input} setInputValue={setInput}></SearchBar>
+      {deferredInput.trim() !== '' &&
+          <SearchBarTable data={filtered} display={display} displaySecond={displaySecond} itemKey={itemKey}></SearchBarTable>}
+      
     </>
   )
 }

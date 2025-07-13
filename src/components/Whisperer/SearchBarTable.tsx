@@ -3,15 +3,20 @@ import React from 'react'
 interface Props<T> {
     data: T[],
     display: (item: T) => string;
+    displaySecond?: (item: T) => string;
     itemKey:(item: T) => string | number
 }
-
-function SearchBarTable<T>({data, display, itemKey}: Props<T>) {
+// TODO: OnClick update store and show results.
+function SearchBarTable<T>({data, display, itemKey, displaySecond = undefined}: Props<T>) {
   return (
     <>
       {data.map(item => {
-        return <p key={itemKey(item)}>{display(item)}</p>
-      })}
+        return(
+        <div key={itemKey(item)}>
+            {display(item)}
+            {displaySecond && displaySecond(item)}
+        </div>
+      )})}
     </>
   )
 }

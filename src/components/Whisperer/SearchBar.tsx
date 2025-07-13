@@ -1,10 +1,22 @@
 import React from 'react'
 
-const SearchBar = () => {
+interface Props {
+    inputValue: string,
+    setInputValue: React.Dispatch<React.SetStateAction<string>>
+    placeholder: string
+}
+function SearchBar ({inputValue, setInputValue, placeholder}: Props) {
   return (
-    <div>
-      
-    </div>
+    <>
+      <input
+        type="text" 
+        placeholder={placeholder} 
+        value={inputValue} 
+        onChange={(e) => {
+            setInputValue(e.target.value)
+        }} 
+        />
+    </>
   )
 }
 
