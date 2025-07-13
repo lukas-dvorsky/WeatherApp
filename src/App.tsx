@@ -4,6 +4,7 @@ import type { City } from './utils/types'
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedCity } from './redux/state/citySlice';
 import type { RootState } from './redux/store';
+import { setSelectedCityWeather } from './redux/state/weatherSlice';
 
 function App() {
   // Save data as array
@@ -11,6 +12,7 @@ function App() {
   const dispatch = useDispatch()
 
   const selectedCity = useSelector((state: RootState) => state.city.selectedCity)
+  const selectedCityWeather = useSelector((state: RootState) => state.weather.setSelectedCityWeather)
 
   async function handleClick(city: City): Promise<void> {
     // api call
@@ -29,7 +31,7 @@ function App() {
         }
 
         const json = await response.json();
-        console.log(json);
+        dispatch(setSelectedCityWeather(json)); 
     } catch (error: unknown) {
       if(error instanceof Error) {
         console.error(error.message);
@@ -38,9 +40,11 @@ function App() {
       }
     }
 
-
-    dispatch(setSelectedCity(city));
+    // Save data to store
+    dispatch(setSelectedCity(city)); 
   }
+
+  console.log("Pocasi tady: ", selectedCityWeather);
 
   return (
     <>
