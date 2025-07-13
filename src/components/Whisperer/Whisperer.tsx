@@ -1,4 +1,4 @@
-import React, { useDeferredValue, useMemo, useState } from 'react'
+import { useDeferredValue, useMemo, useState } from 'react'
 import SearchBar from './SearchBar'
 import SearchBarTable from './SearchBarTable'
 
@@ -10,9 +10,10 @@ interface Props<T> {
   display: (item: T) => string;
   displaySecond?: (item: T) => string;
   itemKey: (item: T) => string | number
+  onClick: (item: T) => void
 }
 
-function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, displaySecond, itemKey}: Props<T>) {
+function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, displaySecond, itemKey, onClick}: Props<T>) {
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -52,8 +53,15 @@ function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, di
     <>
       <SearchBar placeholder={placeholder} inputValue={input} setInputValue={setInput}></SearchBar>
       {deferredInput.trim() !== '' &&
-          <SearchBarTable data={filtered} display={display} displaySecond={displaySecond} itemKey={itemKey}></SearchBarTable>}
-      
+          <SearchBarTable
+            data={filtered} 
+            display={display} 
+            displaySecond={displaySecond} 
+            itemKey={itemKey} 
+            onClick={onClick}
+            setInput={setInput}>
+          </SearchBarTable>
+      }
     </>
   )
 }
