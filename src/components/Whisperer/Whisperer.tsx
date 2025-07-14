@@ -6,6 +6,7 @@ interface Props<T> {
   data: T[]
   limit?: number,
   placeholder?: string,
+  styles?: string,
   searchBy: (item: T) => string;
   display: (item: T) => string;
   displaySecond?: (item: T) => string;
@@ -13,7 +14,7 @@ interface Props<T> {
   onClick: (item: T) => void
 }
 
-function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, displaySecond, itemKey, onClick}: Props<T>) {
+function Whisperer<T>({data, limit = 5, placeholder = "", styles, searchBy, display, displaySecond, itemKey, onClick}: Props<T>) {
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,7 +51,7 @@ function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, di
   }, [deferredInput])
   
   return (
-    <>
+    <section className={`whisperer ${styles}`}>
       <SearchBar placeholder={placeholder} inputValue={input} setInputValue={setInput}></SearchBar>
       {deferredInput.trim() !== '' &&
           <SearchBarTable
@@ -62,7 +63,7 @@ function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, di
             setInput={setInput}>
           </SearchBarTable>
       }
-    </>
+    </section>
   )
 }
 

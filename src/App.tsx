@@ -21,7 +21,7 @@ function App() {
 
     const cityName = city.name;
     const countryCode = city.country;
-    const url = `DELTEhttps://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${apiKey}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${apiKey}&units=metric`;
 
     try {
       if(!apiKey) {throw new Error("API key is missing")}
@@ -48,9 +48,10 @@ function App() {
   console.log("Pocasi tady: ", selectedCityWeather);
 
   return (
-    <>
+    <main>
       <Whisperer<City> 
         data={cities}
+        styles='header'
         searchBy={city => city.name}
         display={city => city.name}
         displaySecond={city => city.country}
@@ -59,8 +60,10 @@ function App() {
         onClick={handleClick}
         />
 
-      {selectedCityWeather && <WeatherDisplay data={selectedCityWeather}/>}
-    </>
+      {selectedCityWeather ?
+       <WeatherDisplay data={selectedCityWeather}/> :
+       <p>No selected city.</p>}
+    </main>
   )
 }
 

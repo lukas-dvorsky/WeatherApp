@@ -1,0 +1,53 @@
+.whisperer {
+    .search-bar {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.4);
+        padding: 4px 6px 4px 6px;
+
+        input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 1.2rem;
+        }
+
+        .remove-input {
+            width: 1.2rem;
+            height: 1.2rem;
+            font-size: 0.6rem;
+            border-radius: 100%;
+            border: none;
+            color: rgba($color: #000000, $alpha: 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    .search-bar:focus-within ~ ul {
+        display: block;
+    }
+
+    ul {
+        display: none;
+        border: 1px solid rgba($color: #000000, $alpha: 0.4);
+        border-radius: 0 0 5px 5px;
+
+    }
+
+    li {
+        border-top: none;
+        padding: 2px 5px 2px 5px;
+        display: flex;
+        justify-content: space-between;
+        
+        &:hover {
+            color: white;
+            background-color: black;
+        }
+    }
+}

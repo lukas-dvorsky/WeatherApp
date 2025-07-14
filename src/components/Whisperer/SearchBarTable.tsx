@@ -13,18 +13,18 @@ function SearchBarTable<T>({data, display, itemKey, displaySecond = undefined, o
         setInput('')
     }
   return (
-    <>
+    <ul>
       {data.map(item => {
         return(
-        <div 
+        <li 
             key={itemKey(item)}
-            onClick={() => handleClick(item)}    
+            onMouseDown={() => handleClick(item)}    
             >
-            {display(item)}
-            {displaySecond && displaySecond(item)}
-        </div>
+            <span>{display(item)}</span>
+            <span>{displaySecond && displaySecond(item)}</span>
+        </li>
       )})}
-    </>
+    </ul>
   )
 }
 
