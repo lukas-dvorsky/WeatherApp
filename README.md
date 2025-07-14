@@ -29,10 +29,11 @@ Finally these data are combined and sliced based on limit, ready to be displayed
 Searches are stores via useMemo() for better performace.
 For input i choosed useDeferredValue(), to optimize performace when handling fast input changes.
 
+Whole component is designed to be reusable for other JSON files.
+
 In our example:
 User is searching cities, on display we can se name of the city and country where city lays. It is because
 a lot cities share the same name, so it is more readable for user.
 
 When user clicks on city, search bar is cleared out and city is save in store.
 
-Whole component is designed to be reusable for other JSON files.
