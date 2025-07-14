@@ -7,6 +7,14 @@
     left: 50%;
     transform: translate(-50%, -80%);
 
+    @include respond(md) {
+        font-size: 1.5rem;
+    }
+
+    @include respond(lg) {
+        font-size: 2rem;
+    }
+
     img {
         width: 8rem;
     }

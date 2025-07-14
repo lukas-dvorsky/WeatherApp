@@ -11,6 +11,7 @@ interface Props {
 function WeatherDisplay({data}:Props) { 
   const sections = createWeatherSections(data);
 
+
   return (
     <section className='weather-grid'>
       <WeatherHeader data={data} style='full-width' />

@@ -6,6 +6,10 @@
     top: 1rem;
     z-index: 9999;
 
+    @include respond(xl) {
+        max-width: 40%;
+    }
+
     .search-bar {
         background-color: $text;
         border: none;
@@ -20,6 +24,11 @@
 
         padding: 5px 6px 5px 6px;
         font-size: 3rem;
+
+        @include respond(xl) {
+            background-color: transparent;
+            border-bottom: 1px solid rgba($jet, $alpha: 0.3);
+        }
 
         input {
             border: none;
@@ -36,6 +45,10 @@
 
             @include respond(lg) {
                 font-size: 2.5rem;
+            }
+
+            @include respond(xl) {
+                font-size: 2rem;
             }
         }
 
@@ -61,6 +74,11 @@
             @include respond(lg) {
                 font-size: 2rem;
                 width: 3rem;
+            }
+
+            @include respond(xl) {
+                font-size: 1.5rem;
+                width: 2.5rem;
             }
         }
     }

@@ -41,7 +41,8 @@ function WeatherHeader({data, style}: Props) {
 
   return (
     <div className={`weather-header ${style ?? ''}`} 
-    style={styles}>
+    style={styles}
+    >
         <span className='city-name'>{data.name}</span>
         <div className='temperature-container'>
           <p>{data.main.temp}°</p>

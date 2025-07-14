@@ -8,6 +8,16 @@
     padding: 5rem 0 2rem 0;
     color: $jet;
 
+    @include respond(xl) {
+        width: min-content;
+        height: 100vh;
+        position: absolute;
+        left: 0;
+        top:0;
+        justify-content: center;
+    }
+    
+
     span {
         font-size: 1.8rem;
 
@@ -33,6 +43,10 @@
         @include respond(lg) {
             font-size: 4rem;
         }
+
+        @include respond(lg) {
+            font-size: 3rem;
+        }
     }
 
     .temperature-container {
@@ -51,6 +65,10 @@
             @include respond(lg) {
                 font-size: 6rem;
             }
+
+            @include respond(xl) {
+                font-size: 5rem;
+            }
         }
 
         img {
@@ -58,6 +76,10 @@
             position: absolute;
             right: -2rem;
             bottom: -4.5rem;
+
+            @include respond(xl) {
+                bottom: 12rem;
+            }
         }
     }
 }
@@ -70,12 +92,28 @@
     @include respond(sm) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        align-items: stretch;
         gap: 1rem;
+    }
+
+    @include respond(xl) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        width: 75vw;
+        margin-left: 25vw;
+        margin-top: 8rem;
+        border-radius: 5px;
     }
 
     .full-width {
         grid-column: span 2;
+
+        @include respond(xl) {
+            grid-column: span 1;
+            grid-row: span 2;
+            padding: 2rem;
+        }
+
     }
 
     .grid-item {
@@ -101,6 +139,10 @@
             font-size: 2rem;
         }
 
+        @include respond(xl) {
+            font-size: 1.5rem;
+        }
+
         h3 {
             background-color: $secondary;
             border:none;
@@ -117,6 +159,10 @@
 
             @include respond(lg) {
                 font-size: 2.8rem;
+            }
+
+            @include respond(xl) {
+                font-size: 1.8rem;
             }
         }
 
