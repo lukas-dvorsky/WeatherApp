@@ -16,17 +16,12 @@ interface Props<T> {
 
 function Whisperer<T>({data, limit = 5, placeholder = "", styles, searchBy, display, displaySecond, itemKey, onClick}: Props<T>) {
 
-  const [isLoading, setIsLoading] = useState(false);
-
   // Deferred input
   const [input, setInput] = useState('')
   const deferredInput = useDeferredValue(input);
 
   // Search data in JSON, send data to table.
   const filtered = useMemo(() => {
-    //if(deferredInput === '') return
-
-    setIsLoading(true);
 
     const inputLower = deferredInput.toLocaleLowerCase();
 
@@ -44,7 +39,6 @@ function Whisperer<T>({data, limit = 5, placeholder = "", styles, searchBy, disp
     // Combine occurancies
     const combined = [...startsWith, ...includes];
 
-    setIsLoading(false);
     // Slice occurancies to 10
     return combined.slice(0, limit);
     

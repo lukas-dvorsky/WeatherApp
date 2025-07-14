@@ -6,13 +6,13 @@ import { setSelectedCity } from './redux/state/citySlice';
 import type { RootState } from './redux/store';
 import { setSelectedCityWeather } from './redux/state/weatherSlice';
 import WeatherDisplay from './components/Weather/WeatherDisplay';
+import NoState from './components/NoState';
 
 function App() {
   // Save data as array
   const cities = citiesData as City[];
   const dispatch = useDispatch()
 
-  const selectedCity = useSelector((state: RootState) => state.city.selectedCity)
   const selectedCityWeather = useSelector((state: RootState) => state.weather.setSelectedCityWeather)
 
   async function handleClick(city: City): Promise<void> {
@@ -45,8 +45,6 @@ function App() {
     dispatch(setSelectedCity(city)); 
   }
 
-  console.log("Pocasi tady: ", selectedCityWeather);
-
   return (
     <main>
       <Whisperer<City> 
@@ -58,11 +56,11 @@ function App() {
         itemKey={city => city.id}
         placeholder='Search for city...'
         onClick={handleClick}
-        />
+      />
 
       {selectedCityWeather ?
-       <WeatherDisplay data={selectedCityWeather}/> :
-       <p>No selected city.</p>}
+      <WeatherDisplay data={selectedCityWeather}/> :
+      <NoState />}
     </main>
   )
 }

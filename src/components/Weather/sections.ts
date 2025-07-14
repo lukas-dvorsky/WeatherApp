@@ -21,19 +21,19 @@ export function createWeatherSections(data: WeatherData): WeatherSectionProps[] 
             ],
         },
         {
-            title: "Pressure",
-            items: [
-                { desc: "Pressure", value: data.main.pressure, unit: "hPa" },
-                { desc: "Sea", value: data.main.sea_level, unit: "hPa" },
-                { desc: "Ground", value: data.main.grnd_level, unit: "hPa" },
-            ],
-        },
-        {
             title: "Wind",
             items: [
                 { desc: "Speed", value: data.wind.speed, unit: "m/s" },
                 { desc: "Gust", value: data.wind.gust, unit: "m/s" },
                 { desc: "Direction", value: data.wind.deg, unit: "°" },
+            ],
+        },
+        {
+            title: "Pressure",
+            items: [
+                { desc: "Pressure", value: data.main.pressure, unit: "hPa" },
+                { desc: "Sea", value: data.main.sea_level, unit: "hPa" },
+                { desc: "Ground", value: data.main.grnd_level, unit: "hPa" },
             ],
         },
         {

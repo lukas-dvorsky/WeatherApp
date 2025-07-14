@@ -24,10 +24,10 @@ const backgroundColors: Record<string, string>= {
   'Clouds': '#b0c4de',
 }
 
-function getBoxShadowStyles(color: string) {
-  const boxShadowValue = `5px 23px 71px 60px ${color}`;
+function getStyles(boxColor: string) {
+  const boxShadowValue = `5px 23px 71px 60px ${boxColor}`;
   return {
-    backgroundColor: color,
+    backgroundColor: boxColor,
     boxShadow: boxShadowValue,
     WebkitBoxShadow: boxShadowValue,
     MozBoxShadow: boxShadowValue,
@@ -37,7 +37,7 @@ function getBoxShadowStyles(color: string) {
 function WeatherHeader({data, style}: Props) {
   const weatherMain = data.weather[0].main
   const backgroundColor = backgroundColors[weatherMain] || '#ffffff'
-  const styles = getBoxShadowStyles(backgroundColor);
+  const styles = getStyles(backgroundColor);
 
   return (
     <div className={`weather-header ${style ?? ''}`} 

@@ -20,7 +20,7 @@ function SearchBar ({inputValue, setInputValue, placeholder}: Props) {
       <button
         className='remove-input'
         onClick={() => {setInputValue('')}}>
-          x
+          {'x'}
       </button>
       }
     </div>
