@@ -72,4 +72,5 @@ export interface WeatherItem {
 export interface WeatherSectionProps {
     title?: string,
     items: WeatherItem[],
+    style?: string
 }

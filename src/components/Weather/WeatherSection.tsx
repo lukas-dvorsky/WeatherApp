@@ -1,11 +1,11 @@
 import type { WeatherSectionProps } from '../../utils/types'
 
-function WeatherSection({title, items}: WeatherSectionProps) {
+function WeatherSection({title, items, style}: WeatherSectionProps) {
   return (
-    <div className='grid-item'>
+    <div className={style}>
         {title && <h3>{title}</h3>}
         {items.map((item)=>{
-            return <p>{item.desc}: {item.value ?? '-'} {item.unit ?? ''}</p>
+            return <p><span>{item.desc}:</span> {item.value ?? '-'} {item.unit ?? ''}</p>
         })}
     </div>
   )

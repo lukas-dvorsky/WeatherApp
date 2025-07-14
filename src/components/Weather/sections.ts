@@ -17,7 +17,7 @@ export function createWeatherSections(data: WeatherData): WeatherSectionProps[] 
                 { desc: "Min", value: data.main.temp_min, unit: "°" },
                 { desc: "Max", value: data.main.temp_max, unit: "°" },
                 { desc: "Humidity", value: data.main.humidity, unit: "%" },
-                { desc: "Visibility", value: data.visibility },
+                { desc: "Visibility", value: data.visibility/1000, unit: 'km' },
             ],
         },
         {

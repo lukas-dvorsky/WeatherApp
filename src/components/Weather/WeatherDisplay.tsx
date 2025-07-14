@@ -15,7 +15,7 @@ function WeatherDisplay({data}:Props) {
     <section className='weather-grid'>
       <WeatherHeader data={data} style='full-width' />
       {sections.map((section, index) => {
-        return <WeatherSection key={index} title={section.title} items={section.items} />
+        return <WeatherSection key={index} title={section.title} items={section.items} style='grid-item' />
       })}
     </section>
   )

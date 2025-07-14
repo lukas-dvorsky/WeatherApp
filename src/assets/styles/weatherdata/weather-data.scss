@@ -1,7 +1,12 @@
+@import '../resposive.scss';
+
 .weather-header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100vw;
+    padding: 5rem 0 2rem 0;
+    color: $jet;
 
 
     span {
@@ -11,18 +16,21 @@
     .city-name {
         font-size: 2rem;
         font-weight: 500;
+        z-index: 99;
     }
 
     .temperature-container {
         position: relative;
 
-        span {
+        p {
+            position: relative;
             font-weight: 700;
             font-size: 3rem;
+            z-index: 999;
         }
 
         img {
-            z-index: -99;
+            z-index: 1;
             width: 10rem;
             right: -3.5rem;
             top: -4.5rem;
@@ -31,11 +39,16 @@
     }
 }
 
-/* .weather-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 0.5rem;
+.weather-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include respond(sm) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
 
     .full-width {
         grid-column: span 2;
@@ -44,45 +57,26 @@
     .grid-item {
         display: flex;
         flex-direction: column;
-        border: 1px solid rgba($color: #000000, $alpha: 1.0);
-        border-radius: 4px;
-        padding: 0.5rem;
-
-        p {
-            font-weight: 800;
-        }
-        span {
-            font-weight: 400;
-        }
-    }
-} */
-
-.weather-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.5rem;
-
-    .grid-item {
-        display: flex;
-        flex-direction: column;
-        border: 1px solid rgba($color: #000000, $alpha: 1.0);
         border-radius: 4px;
         padding: 0.5rem;
         width: 80vw;
+        margin: auto;
+        background-color: $secondary;
+
+        @include respond(sm) {
+            width: 100%;
+            padding: 2rem;
+        }
 
         h3 {
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-/*         p {
+        span {
             font-weight: 800;
         }
-        span {
-            font-weight: 400;
-        } */
     }
 }

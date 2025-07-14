@@ -16,11 +16,13 @@ function SearchBar ({inputValue, setInputValue, placeholder}: Props) {
             setInputValue(e.target.value)
         }} 
       />
+      {inputValue !== '' &&
       <button
         className='remove-input'
         onClick={() => {setInputValue('')}}>
           x
       </button>
+      }
     </div>
   )
 }
