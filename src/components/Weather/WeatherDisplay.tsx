@@ -1,17 +1,23 @@
-import React from 'react'
 import type { WeatherData } from '../../utils/types'
+import WeatherHeader from './WeatherHeader'
+import WeatherSection from './WeatherSection';
+import { createWeatherSections } from './sections'
 
 interface Props {
     data: WeatherData
 }
 
-function WeatherDisplay({data}:Props) {
+// Displays informations about weather based on selected city
+function WeatherDisplay({data}:Props) { 
+  const sections = createWeatherSections(data);
+
   return (
-    <div>
-      <p>{data.name}</p>
-      <p>{data.weather[0].main}</p>
-      <p>{data.main.temp}</p>
-    </div>
+    <section className='weather-grid'>
+      <WeatherHeader data={data} style='full-width' />
+      {sections.map((section, index) => {
+        return <WeatherSection key={index} title={section.title} items={section.items} />
+      })}
+    </section>
   )
 }
 

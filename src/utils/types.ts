@@ -16,7 +16,7 @@ export interface City {
 export interface WeatherDataMain {
     feels_like: number
     grnd_level: number
-    huminidy: number
+    humidity: number
     pressure: number
     sea_level: number
     temp: number
@@ -60,4 +60,16 @@ export interface WeatherData {
     weather: WeatherDataWeather[]
     length: number
     wind: WeatherDataWind
+}
+
+export interface WeatherItem {
+    desc: string,
+    value: number | string,
+    unit?: string
+    icon?: string
+}
+
+export interface WeatherSectionProps {
+    title?: string,
+    items: WeatherItem[],
 }

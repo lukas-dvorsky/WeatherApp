@@ -1,12 +1,13 @@
 main {
     display: flex;
     flex-direction: column;
+    gap: 3rem;
     align-items: center;
     width: 100vw;
-    overflow-x: hidden;
 
     .header {
         width: 90%;
         margin-top: 1rem;
     }
+
 }
