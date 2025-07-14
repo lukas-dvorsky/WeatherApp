@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedCity } from './redux/state/citySlice';
 import type { RootState } from './redux/store';
 import { setSelectedCityWeather } from './redux/state/weatherSlice';
+import WeatherDisplay from './components/Weather/WeatherDisplay';
 
 function App() {
   // Save data as array
@@ -20,7 +21,7 @@ function App() {
 
     const cityName = city.name;
     const countryCode = city.country;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${apiKey}`;
+    const url = `DELTEhttps://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${apiKey}&units=metric`;
 
     try {
       if(!apiKey) {throw new Error("API key is missing")}
@@ -57,6 +58,8 @@ function App() {
         placeholder='Search for city...'
         onClick={handleClick}
         />
+
+      {selectedCityWeather && <WeatherDisplay data={selectedCityWeather}/>}
     </>
   )
 }
