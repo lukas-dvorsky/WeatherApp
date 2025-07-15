@@ -5,44 +5,12 @@ interface Props {
     style?: string
 }
 
-// Background colors based on weather
-const backgroundColors: Record<string, string>= {
-  'Thunderstorm': '#3b3b58',
-  'Drizzle': '#8fa4b8',
-  'Rain': '#5c7c99',
-  'Snow': '#f0f0f5',
-  'Mist': '#d6d6d6',
-  'Smoke': '#999999',
-  'Haze': '#b7b7b7',
-  'Dust': '#d4b483',
-  'Fog': '#c0c0c0',
-  'Sand': '#e2c290',
-  'Ash': '#777777',
-  'Squall': '#4a4a6a',
-  'Tornado': '#2c2c2c',
-  'Clear': '#87ceeb',
-  'Clouds': '#b0c4de',
-}
-
-function getStyles(boxColor: string) {
-  const boxShadowValue = `5px 25px 61px 69px ${boxColor}`;
-  return {
-    backgroundColor: boxColor,
-    boxShadow: boxShadowValue,
-    WebkitBoxShadow: boxShadowValue,
-    MozBoxShadow: boxShadowValue,
-  };
-}
-
 function WeatherHeader({data, style}: Props) {
   const weatherMain = data.weather[0].main
-  const backgroundColor = backgroundColors[weatherMain] || '#ffffff'
-  const styles = getStyles(backgroundColor);
+  const weatherClass = weatherMain ? weatherMain.toLowerCase() : 'clear';
 
   return (
-    <div className={`weather-header ${style ?? ''}`} 
-    style={styles}
-    >
+    <div className={`weather-header ${style ?? ''} ${weatherClass}`} >
         <span className='city-name'>{data.name}</span>
         <div className='temperature-container'>
           <p>{data.main.temp}°</p>

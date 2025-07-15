@@ -1,4 +1,4 @@
-@import '../responsive.scss';
+@import '../mixins.scss';
 
 .weather-header {
     display: flex;
@@ -8,6 +8,67 @@
     padding: 5rem 0 2rem 0;
     color: $jet;
 
+    &.thunderstorm {
+    background-color: #3b3b58;
+    @include boxShadow(#3b3b58);
+    }
+    &.drizzle {
+        background-color: #8fa4b8;
+        @include boxShadow(#8fa4b8);
+    }
+    &.rain {
+        background-color: #5c7c99;
+        @include boxShadow(#5c7c99);
+    }
+    &.snow {
+        background-color: #f0f0f5;
+        @include boxShadow(#f0f0f5);
+    }
+    &.mist {
+        background-color: #d6d6d6;
+        @include boxShadow(#d6d6d6);
+    }
+    &.smoke {
+        background-color: #999999;
+        @include boxShadow(#999999);
+    }
+    &.haze {
+        background-color: #b7b7b7;
+        @include boxShadow(#b7b7b7);
+    }
+    &.dust {
+        background-color: #d4b483;
+        @include boxShadow(#d4b483);
+    }
+    &.fog {
+        background-color: #c0c0c0;
+        @include boxShadow(#c0c0c0);
+    }
+    &.sand {
+        background-color: #e2c290;
+        @include boxShadow(#e2c290);
+    }
+    &.ash {
+        background-color: #777777;
+        @include boxShadow(#777777);
+    }
+    &.squall {
+        background-color: #4a4a6a;
+        @include boxShadow(#4a4a6a);
+    }
+    &.tornado {
+        background-color: #2c2c2c;
+        @include boxShadow(#2c2c2c);
+    }
+    &.clear {
+        background-color: #87ceeb;
+        @include boxShadow(#87ceeb);
+    }
+    &.clouds {
+        background-color: #b0c4de;
+        @include boxShadow(#b0c4de);
+    }
+
     @include respond(xl) {
         width: min-content;
         height: 100vh;
@@ -16,7 +77,6 @@
         top:0;
         justify-content: center;
     }
-    
 
     span {
         font-size: 1.8rem;
@@ -103,6 +163,7 @@
         margin-left: 25vw;
         margin-top: 8rem;
         border-radius: 5px;
+        max-height: 75vh;
     }
 
     .full-width {

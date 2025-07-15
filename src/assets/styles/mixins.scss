@@ -1,3 +1,4 @@
+// Mixin for responsive styles
 @mixin respond($breakpoint) {
     @if $breakpoint == sm {
         @media (min-width: 480px) {@content;}
@@ -8,4 +9,11 @@
     } @else if $breakpoint == xl {
         @media (min-width: 1280px) {@content;}
     }
+}
+
+// Mixin for creating shadowboxes
+@mixin boxShadow($color) {
+  box-shadow: 5px 25px 61px 69px $color;
+  -webkit-box-shadow: 5px 25px 61px 69px $color;
+  -moz-box-shadow: 5px 25px 61px 69px $color;
 }
