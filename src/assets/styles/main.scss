@@ -1,5 +1,5 @@
 // Layout
-@import './layout/main.scss';
+@import './layout/layout.scss';
 
 // Whisperer
 @import './whisperer/searchbar.scss';
@@ -26,5 +26,9 @@
 body {
     font-family: "Nunito", sans-serif;
     background-color: $background;
-    color: $text
+    color: $text;
+
+    @include respond(xl) {
+        overflow: hidden;
+    }
 }

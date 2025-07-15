@@ -1,0 +1,52 @@
+@import '../colors.scss';
+@import '../responsive.scss';
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+footer {
+
+    width: 100vw;
+    padding: 0.8rem;
+    background-color: transparent;
+    color: $jet;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(#000000, $alpha: 0.1);
+
+    
+    @include respond(sm) {
+        font-size: 1.3rem;
+
+    }
+
+    
+    @include respond(md) {
+        font-size: 1.6rem;
+
+    }
+
+    @include respond(lg) {
+        font-size: 1.9rem;
+    }
+
+    @include respond(xl) {
+        font-size: 1rem;
+        position: absolute;
+        bottom: 0;
+    }
+}
