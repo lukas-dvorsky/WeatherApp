@@ -1,0 +1,173 @@
+@import '../responsive.scss';
+
+.weather-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    padding: 5rem 0 2rem 0;
+    color: $jet;
+
+    @include respond(xl) {
+        width: min-content;
+        height: 100vh;
+        position: absolute;
+        left: 0;
+        top:0;
+        justify-content: center;
+    }
+    
+
+    span {
+        font-size: 1.8rem;
+
+        @include respond(md) {
+            font-size: 2.3rem;
+        }
+
+        @include respond(lg) {
+            font-size: 2.8rem;
+        }
+    }
+
+    .city-name {
+        font-size: 3rem;
+        font-weight: 500;
+        z-index: 99;
+        text-align: center;
+
+        @include respond(md) {
+            font-size: 3.5rem;
+        }
+
+        @include respond(lg) {
+            font-size: 4rem;
+        }
+
+        @include respond(lg) {
+            font-size: 3rem;
+        }
+    }
+
+    .temperature-container {
+        position: relative;
+
+        p {
+            position: relative;
+            font-weight: 700;
+            font-size: 5rem;
+            z-index: 999;
+
+            @include respond(md) {
+                font-size: 5.5rem;
+            }
+
+            @include respond(lg) {
+                font-size: 6rem;
+            }
+
+            @include respond(xl) {
+                font-size: 5rem;
+            }
+        }
+
+        img {
+            z-index: 1;
+            position: absolute;
+            right: -2rem;
+            bottom: -4.5rem;
+
+            @include respond(xl) {
+                bottom: 12rem;
+            }
+        }
+    }
+}
+
+.weather-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include respond(sm) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    @include respond(xl) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        width: 75vw;
+        margin-left: 25vw;
+        margin-top: 8rem;
+        border-radius: 5px;
+    }
+
+    .full-width {
+        grid-column: span 2;
+
+        @include respond(xl) {
+            grid-column: span 1;
+            grid-row: span 2;
+            padding: 2rem;
+        }
+
+    }
+
+    .grid-item {
+        display: flex;
+        flex-direction: column;
+        border-radius: 4px;
+        padding: 0.5rem;
+        width: 80vw;
+        margin: auto;
+        color: $jet;
+
+        @include respond(sm) {
+            width: 100%;
+            padding: 2rem;
+            height: 100%;
+        }
+
+        @include respond(md) {
+            font-size: 1.5rem;
+        }
+
+        @include respond(lg) {
+            font-size: 2rem;
+        }
+
+        @include respond(xl) {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            background-color: $secondary;
+            border:none;
+            border-radius: 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: $text;
+
+            @include respond(md) {
+                font-size: 2.3rem;
+            }
+
+            @include respond(lg) {
+                font-size: 2.8rem;
+            }
+
+            @include respond(xl) {
+                font-size: 1.8rem;
+            }
+        }
+
+        span {
+            font-weight: 800;
+        }
+    }
+}

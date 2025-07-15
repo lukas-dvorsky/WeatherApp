@@ -6,6 +6,7 @@ interface Props<T> {
   data: T[]
   limit?: number,
   placeholder?: string,
+  styles?: string,
   searchBy: (item: T) => string;
   display: (item: T) => string;
   displaySecond?: (item: T) => string;
@@ -13,9 +14,7 @@ interface Props<T> {
   onClick: (item: T) => void
 }
 
-function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, displaySecond, itemKey, onClick}: Props<T>) {
-
-  const [isLoading, setIsLoading] = useState(false);
+function Whisperer<T>({data, limit = 5, placeholder = "", styles, searchBy, display, displaySecond, itemKey, onClick}: Props<T>) {
 
   // Deferred input
   const [input, setInput] = useState('')
@@ -23,9 +22,6 @@ function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, di
 
   // Search data in JSON, send data to table.
   const filtered = useMemo(() => {
-    //if(deferredInput === '') return
-
-    setIsLoading(true);
 
     const inputLower = deferredInput.toLocaleLowerCase();
 
@@ -43,14 +39,13 @@ function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, di
     // Combine occurancies
     const combined = [...startsWith, ...includes];
 
-    setIsLoading(false);
     // Slice occurancies to 10
     return combined.slice(0, limit);
     
   }, [deferredInput])
   
   return (
-    <>
+    <section className={`whisperer ${styles}`}>
       <SearchBar placeholder={placeholder} inputValue={input} setInputValue={setInput}></SearchBar>
       {deferredInput.trim() !== '' &&
           <SearchBarTable
@@ -62,7 +57,7 @@ function Whisperer<T>({data, limit = 10, placeholder = "", searchBy, display, di
             setInput={setInput}>
           </SearchBarTable>
       }
-    </>
+    </section>
   )
 }
 

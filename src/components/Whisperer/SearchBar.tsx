@@ -7,7 +7,7 @@ interface Props {
 }
 function SearchBar ({inputValue, setInputValue, placeholder}: Props) {
   return (
-    <>
+    <div className='search-bar'>
       <input
         type="text" 
         placeholder={placeholder} 
@@ -15,8 +15,15 @@ function SearchBar ({inputValue, setInputValue, placeholder}: Props) {
         onChange={(e) => {
             setInputValue(e.target.value)
         }} 
-        />
-    </>
+      />
+      {inputValue !== '' &&
+      <button
+        className='remove-input'
+        onClick={() => {setInputValue('')}}>
+          {'x'}
+      </button>
+      }
+    </div>
   )
 }
 

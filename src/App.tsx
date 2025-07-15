@@ -6,13 +6,13 @@ import { setSelectedCity } from './redux/state/citySlice';
 import type { RootState } from './redux/store';
 import { setSelectedCityWeather } from './redux/state/weatherSlice';
 import WeatherDisplay from './components/Weather/WeatherDisplay';
+import NoState from './components/NoState';
 
 function App() {
   // Save data as array
   const cities = citiesData as City[];
   const dispatch = useDispatch()
 
-  const selectedCity = useSelector((state: RootState) => state.city.selectedCity)
   const selectedCityWeather = useSelector((state: RootState) => state.weather.setSelectedCityWeather)
 
   async function handleClick(city: City): Promise<void> {
@@ -21,7 +21,7 @@ function App() {
 
     const cityName = city.name;
     const countryCode = city.country;
-    const url = `DELTEhttps://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${apiKey}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${apiKey}&units=metric`;
 
     try {
       if(!apiKey) {throw new Error("API key is missing")}
@@ -45,22 +45,23 @@ function App() {
     dispatch(setSelectedCity(city)); 
   }
 
-  console.log("Pocasi tady: ", selectedCityWeather);
-
   return (
-    <>
+    <main>
       <Whisperer<City> 
         data={cities}
+        styles='header'
         searchBy={city => city.name}
         display={city => city.name}
         displaySecond={city => city.country}
         itemKey={city => city.id}
         placeholder='Search for city...'
         onClick={handleClick}
-        />
+      />
 
-      {selectedCityWeather && <WeatherDisplay data={selectedCityWeather}/>}
-    </>
+      {selectedCityWeather ?
+      <WeatherDisplay data={selectedCityWeather}/> :
+      <NoState />}
+    </main>
   )
 }
 

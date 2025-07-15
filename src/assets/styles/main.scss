@@ -1,0 +1,30 @@
+// Layout
+@import './layout/main.scss';
+
+// Whisperer
+@import './whisperer/searchbar.scss';
+
+// Weather data
+@import './weatherdata/weather-data.scss';
+
+// No state
+@import './no-state/no-state.scss';
+
+// Colors
+@import './colors.scss';
+
+
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    background-color: $background;
+    color: $text
+}
