@@ -10,14 +10,14 @@ interface Props {
 
 function ForecastContainer({lists, limit}: Props) {
 
-    const selectedWeatherIndex = useSelector((state: RootState) => state.weather.setSelectedListIndex)
+    const anchor = useSelector((state: RootState) => state.weather.setAnchorListIndex)
 
-    const slicedLists = lists.slice(selectedWeatherIndex, selectedWeatherIndex + limit);
+    const slicedLists = lists.slice(anchor, anchor + limit);
 
     return (
         <section>
             {slicedLists.map((list, index) => {
-                return <ForecastBox key={index} list={list} listIndex={index} />
+                return <ForecastBox key={index} list={list} listIndex={anchor + index} />
             })}
         </section>
     )

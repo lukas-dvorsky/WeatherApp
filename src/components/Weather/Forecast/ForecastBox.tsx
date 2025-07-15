@@ -10,8 +10,13 @@ interface Props {
 function ForecastBox({list, listIndex}: Props) {
   const dispatch = useDispatch()
 
+  console.log("List index:", listIndex)
+
   return (
-    <button onClick={() => dispatch(setSelectedListIndex(listIndex))}>
+    <button onClick={() => {
+    dispatch(setSelectedListIndex(listIndex))
+  }}
+    >
       {list.dt_txt}
     </button>
   )

@@ -5,9 +5,6 @@ import WeatherHeader from './WeatherHeader'
 import WeatherSection from './WeatherSection';
 import { createWeatherSections } from './sections'
 import type { RootState } from '../../redux/store';
-import ForecastBox from './Forecast/ForecastBox';
-import ShowListData from './Forecast/ForecastContainer';
-import DayBox from './Forecast/DayBox';
 import DayContainer from './Forecast/DayContainer';
 
 interface Props {
