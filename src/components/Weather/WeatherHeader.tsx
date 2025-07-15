@@ -25,7 +25,7 @@ const backgroundColors: Record<string, string>= {
 }
 
 function getStyles(boxColor: string) {
-  const boxShadowValue = `5px 23px 71px 60px ${boxColor}`;
+  const boxShadowValue = `5px 25px 61px 69px ${boxColor}`;
   return {
     backgroundColor: boxColor,
     boxShadow: boxShadowValue,
