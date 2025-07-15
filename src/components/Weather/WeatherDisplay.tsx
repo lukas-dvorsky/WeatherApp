@@ -22,8 +22,8 @@ function WeatherDisplay({data}:Props) {
   return (
     <section className='weather-grid'>
       <WeatherHeader data={data} style='full-width' />
+      <DaySelectionContainer styles='day-selection-container' lists={data.list}/>
       <HourSelectionContainer lists={data.list} limit={8}/>
-      <DaySelectionContainer lists={data.list}/>
 
       {sections.map((section, index) => {
         return <WeatherSection key={index} title={section.title} items={section.items} style='grid-item' />

@@ -1,20 +1,28 @@
 import { useDispatch } from "react-redux"
-import { setAnchorListIndex } from "../../../../redux/state/weatherSlice"
+import { setAnchorListIndex, setSelectedListIndex } from "../../../../redux/state/weatherSlice"
 
 interface Props {
     dayName: string
     listIndex: number
+    buttonIndex: number
+    selected?: boolean
+    setSelected?: React.Dispatch<React.SetStateAction<number>>
 }
 
-function DaySelectionButton({dayName, listIndex}: Props) {
+
+
+function DaySelectionButton({dayName, listIndex, buttonIndex, selected = false, setSelected}: Props) {
     const dispatch = useDispatch()
 
+    function handleClick() {
+        dispatch(setAnchorListIndex(listIndex))
+        dispatch(setSelectedListIndex(listIndex))
+        setSelected !== undefined && setSelected(buttonIndex)
+    }
+
     return (
-        <button onClick={() => {
-            dispatch(setAnchorListIndex(listIndex))
-        }
-        }>
-            <p style={{color: 'red'}}>{dayName} {listIndex}</p>
+        <button className={`${selected && 'selected'}`} onClick={() => handleClick()}>
+            {dayName}
         </button>
     )
 }

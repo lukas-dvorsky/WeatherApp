@@ -1,0 +1,27 @@
+@import '../mixins.scss';
+@import '../colors.scss';
+
+.day-selection-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: space-around;
+    align-content: stretch;
+    
+    button {
+        border: none;
+        outline: none;
+        padding: 2rem 1.5rem;
+        background-color: rgba($jet, $alpha: 0.1);
+        font-weight: 700;
+
+        &:hover {
+            background-color: rgba($jet, $alpha: 0.3);
+        }
+
+        &.selected, &.selected:hover {
+            font-size: 1.5rem;
+            background-color: rgba($primary, $alpha: 0.4);
+        }
+
+    }
+}
