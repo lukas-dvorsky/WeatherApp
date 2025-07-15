@@ -22,13 +22,12 @@ function WeatherDisplay({data}:Props) {
   // Shows earliest forecast data
   const sections = createWeatherSections(data, selectedWeatherIndex);
 
-
   return (
     <section className='weather-grid'>
       <WeatherHeader data={data} style='full-width' />
       <ForecastContainer lists={data.list} limit={8}/>
       <DayContainer lists={data.list}/>
-      
+
       {sections.map((section, index) => {
         return <WeatherSection key={index} title={section.title} items={section.items} style='grid-item' />
       })}

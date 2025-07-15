@@ -16,7 +16,6 @@ function getUniqueDays(lists: WeatherDataList[]) {
         }
     });
 
-    console.log("Unique days: ", unique)
     return unique
 }
 

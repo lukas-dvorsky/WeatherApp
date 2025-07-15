@@ -1,5 +1,7 @@
+import { useSelector } from 'react-redux';
 import type { WeatherDataList } from '../../../utils/types'
 import ForecastBox from './ForecastBox';
+import type { RootState } from '../../../redux/store';
 
 interface Props {
     lists: WeatherDataList[]
@@ -7,7 +9,10 @@ interface Props {
 }
 
 function ForecastContainer({lists, limit}: Props) {
-    const slicedLists = lists.slice(0, limit);
+
+    const selectedWeatherIndex = useSelector((state: RootState) => state.weather.setSelectedListIndex)
+
+    const slicedLists = lists.slice(selectedWeatherIndex, selectedWeatherIndex + limit);
 
     return (
         <section>
