@@ -1,5 +1,5 @@
-import type { WeatherDataList } from '../../../utils/types'
-import DayBox from './DayBox';
+import type { WeatherDataList } from '../../../../utils/types'
+import DaySelectionButton from './DaySelectionButton';
 
 interface Props {
     lists: WeatherDataList[]
@@ -33,17 +33,17 @@ function getDayNames(lists: WeatherDataList[], listIndexes: number[]) {
 
 }
 
-function DayContainer({lists}: Props) {
+function DaySelectionContainer({lists}: Props) {
     const uniqueDaysId = getUniqueDays(lists);
     const daysNames = getDayNames(lists, uniqueDaysId)
 
     return (
         <section>
             {uniqueDaysId.map((day, index)=> {
-                return <DayBox key={index} dayName={daysNames[index]} listIndex={day}/>
+                return <DaySelectionButton key={index} dayName={daysNames[index]} listIndex={day}/>
             })}
         </section>
     )
 }
 
-export default DayContainer
+export default DaySelectionContainer

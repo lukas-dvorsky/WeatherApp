@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux"
-import { setAnchorListIndex } from "../../../redux/state/weatherSlice"
+import { setAnchorListIndex } from "../../../../redux/state/weatherSlice"
 
 interface Props {
     dayName: string
     listIndex: number
 }
 
-function DayBox({dayName, listIndex}: Props) {
+function DaySelectionButton({dayName, listIndex}: Props) {
     const dispatch = useDispatch()
 
     return (
@@ -19,4 +19,4 @@ function DayBox({dayName, listIndex}: Props) {
     )
 }
 
-export default DayBox
+export default DaySelectionButton

@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
-import type { WeatherDataList } from '../../../utils/types'
-import ForecastBox from './ForecastBox';
-import type { RootState } from '../../../redux/store';
+import type { WeatherDataList } from '../../../../utils/types'
+import HourSelectionButton from './HourSelectionButton';
+import type { RootState } from '../../../../redux/store';
 
 interface Props {
     lists: WeatherDataList[]
     limit: number
 }
 
-function ForecastContainer({lists, limit}: Props) {
+function HourSelectionContainer({lists, limit}: Props) {
 
     const anchor = useSelector((state: RootState) => state.weather.setAnchorListIndex)
 
@@ -17,10 +17,10 @@ function ForecastContainer({lists, limit}: Props) {
     return (
         <section>
             {slicedLists.map((list, index) => {
-                return <ForecastBox key={index} list={list} listIndex={anchor + index} />
+                return <HourSelectionButton key={index} list={list} listIndex={anchor + index} />
             })}
         </section>
     )
 }
 
-export default ForecastContainer
+export default HourSelectionContainer
