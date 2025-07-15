@@ -1,4 +1,4 @@
-import cloud from '../assets/cloud.svg'
+import cloud from '../../assets/cloud.svg'
 
 function NoState() {
   return (

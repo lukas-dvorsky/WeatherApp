@@ -6,7 +6,8 @@ import { setSelectedCity } from './redux/state/citySlice';
 import type { RootState } from './redux/store';
 import { setSelectedCityWeather } from './redux/state/weatherSlice';
 import WeatherDisplay from './components/Weather/WeatherDisplay';
-import NoState from './components/NoState';
+import NoState from './components/General/NoState';
+import Footer from './components/General/Footer';
 
 function App() {
   // Save data as array
@@ -46,22 +47,26 @@ function App() {
   }
 
   return (
-    <main>
-      <Whisperer<City> 
-        data={cities}
-        styles='header'
-        searchBy={city => city.name}
-        display={city => city.name}
-        displaySecond={city => city.country}
-        itemKey={city => city.id}
-        placeholder='Search for city...'
-        onClick={handleClick}
-      />
+    <>
+      <main>
+        <Whisperer<City> 
+          data={cities}
+          styles='header'
+          searchBy={city => city.name}
+          display={city => city.name}
+          displaySecond={city => city.country}
+          itemKey={city => city.id}
+          placeholder='Search for city...'
+          onClick={handleClick}
+        />
 
-      {selectedCityWeather ?
-      <WeatherDisplay data={selectedCityWeather}/> :
-      <NoState />}
-    </main>
+        {selectedCityWeather ?
+        <WeatherDisplay data={selectedCityWeather}/> :
+        <NoState />}
+
+      </main>
+      <Footer texts={['Created by Lukas Dvorsky.']}/>
+    </>
   )
 }
 
