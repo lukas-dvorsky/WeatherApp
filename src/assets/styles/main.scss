@@ -29,6 +29,5 @@ body {
     color: $text;
 
     @include respond(xl) {
-        overflow: hidden;
     }
 }

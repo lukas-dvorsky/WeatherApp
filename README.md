@@ -4,22 +4,31 @@ Weather app allows users to search for cities and view realtime weather informat
 ## Technologies
 TODO: Doplnit
 
-React
-TypeScript
-Redux Toolkit
+### Development
 Vite
+TypeScript
+React
+Redux
+
+### Styling
+Sass
+
 
 ## Instalation
 1.
 2.
 3.
 
+## Description
+Simple application to show weather forcast. User finds city that he want's to see weather forecast in searchbar. Searchbar whispers user cities based on text user writes. Data for for whispering are from JSON file from Open Weather Map.
+
+After user's choice current weather information from Open Weather Map API are shown to user. 
+
 ## Components
 ### Whisperer
-IMG
 Whisperer is made out of two other components (SearchBar, SearchBarTable).
 User input is stored in Whisperer component and is spred out to other components.
-By default 10 items are selected from JSON file based on user input and then are shown in table.
+By default 5 items are selected from JSON file based on user input and then are shown in table.
 User can click on item, what happens depends on desired function declared above Whisperer component.
 
 When user inputs text, first thing that happens is that program is trying to select cities that beggin with that query, then
@@ -36,4 +45,11 @@ User is searching cities, on display we can se name of the city and country wher
 a lot cities share the same name, so it is more readable for user.
 
 When user clicks on city, search bar is cleared out and city is save in store.
+
+### Displaying weather
+I created component WeatherDisplay that shows information about current weather. Data are being fetched from openweatherapp API based on selected city from Whisperer component. Data from API are store in Redux store (weatherSlice.ts).When no city is selected NoState component is shown to inform user about next steps. WeatherDisplay is made out of two other components WeatherHeader and WeatherSection.
+
+WeatherHeader shows city name, current temperature and current information about how the sky looks like (Clear, Clouds, etc.). WeatherHeader is dynamic and changes background color based on sky information, for example when the sky is clear background color of the component is turqoise, when it is windy background color is light gray.
+
+WeatherSection is component that shows any data and shows them in a box. Data with units and title are stored in sections.ts file, where are data easily changable and whole component is more readable. Boxes are rendered in grid pattern based on screen size.
 
