@@ -1,5 +1,5 @@
-import type { WeatherDataList } from '../../utils/types'
-import ForecastBox from './ForecastBox'
+import type { WeatherDataList } from '../../../utils/types'
+import ForecastBox from './ForecastBox';
 
 interface Props {
     lists: WeatherDataList[]
@@ -11,9 +11,9 @@ function ForecastContainer({lists, limit}: Props) {
 
     return (
         <section>
-        {slicedLists.map((list, index) => {
-            return <ForecastBox key={index} data={list} listIndex={index}/>
-        })}
+            {slicedLists.map((list, index) => {
+                return <ForecastBox key={index} list={list} listIndex={index} />
+            })}
         </section>
     )
 }

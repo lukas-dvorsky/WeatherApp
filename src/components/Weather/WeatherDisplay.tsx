@@ -1,10 +1,14 @@
 import { useSelector } from 'react-redux';
 import type { WeatherData } from '../../utils/types'
-import ForecastContainer from './ForecastContainer';
+import ForecastContainer from './Forecast/ForecastContainer';
 import WeatherHeader from './WeatherHeader'
 import WeatherSection from './WeatherSection';
 import { createWeatherSections } from './sections'
 import type { RootState } from '../../redux/store';
+import ForecastBox from './Forecast/ForecastBox';
+import ShowListData from './Forecast/ForecastContainer';
+import DayBox from './Forecast/DayBox';
+import DayContainer from './Forecast/DayContainer';
 
 interface Props {
     data: WeatherData
@@ -23,6 +27,8 @@ function WeatherDisplay({data}:Props) {
     <section className='weather-grid'>
       <WeatherHeader data={data} style='full-width' />
       <ForecastContainer lists={data.list} limit={8}/>
+      <DayContainer lists={data.list}/>
+      
       {sections.map((section, index) => {
         return <WeatherSection key={index} title={section.title} items={section.items} style='grid-item' />
       })}
