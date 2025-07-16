@@ -4,12 +4,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vh;
+    width: 100%;
     padding: 5rem 0rem 2rem 0;
     color: $jet;
 
     &.thunderstorm {
     background-color: #3b3b58;
+
     @include boxShadow(#3b3b58);
     }
     &.drizzle {
@@ -148,7 +149,7 @@
 .weather-grid {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     
     @include respond(sm) {
         display: grid;

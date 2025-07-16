@@ -5,6 +5,7 @@
     box-shadow: 5px 5px 15px -11px rgba(0,0,0,0.75);
     -webkit-box-shadow: 5px 5px 15px -11px rgba(0,0,0,0.75);
     -moz-box-shadow: 5px 5px 15px -11px rgba(0,0,0,0.75);
+    width: 100%;
 
     @include respond(xl) {
         display: flex;
@@ -61,14 +62,10 @@
 .hour-selection-container {
     display: flex;
     overflow-x: scroll;
-    justify-content: center;
-    width: 100vw;
+    justify-content: start;
+    width: 100%;
     background-color: rgba($jet, $alpha: 0.1);
 
-    @include respond(xl) {
-        width: 100%;
-
-    }
     button {
         display: flex;
         flex-direction: column;
