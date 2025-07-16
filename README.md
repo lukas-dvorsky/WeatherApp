@@ -2,8 +2,6 @@
 Weather app allows users to search for cities and view realtime weather information.
 
 ## Technologies
-TODO: Doplnit
-
 ### Development
 Vite
 TypeScript
@@ -47,9 +45,11 @@ a lot cities share the same name, so it is more readable for user.
 When user clicks on city, search bar is cleared out and city is save in store.
 
 ### Displaying weather
-I created component WeatherDisplay that shows information about current weather. Data are being fetched from openweatherapp API based on selected city from Whisperer component. Data from API are store in Redux store (weatherSlice.ts).When no city is selected NoState component is shown to inform user about next steps. WeatherDisplay is made out of two other components WeatherHeader and WeatherSection.
+I created component WeatherDisplay that shows information about current weather and forecast for 5 days ahead. Data are being fetched from openweatherapp API based on selected city from Whisperer component. Data from API are store in Redux store (weatherSlice.ts).When no city is selected NoState component is shown to inform user about next steps.
 
 WeatherHeader shows city name, current temperature and current information about how the sky looks like (Clear, Clouds, etc.). WeatherHeader is dynamic and changes background color based on sky information, for example when the sky is clear background color of the component is turqoise, when it is windy background color is light gray.
 
 WeatherSection is component that shows any data and shows them in a box. Data with units and title are stored in sections.ts file, where are data easily changable and whole component is more readable. Boxes are rendered in grid pattern based on screen size.
+
+The rest components WeatherDisplay contains are Day and Hour selection containers that handles data from API and allows user to filter data based on day and hour.
 

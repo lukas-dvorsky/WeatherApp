@@ -32,7 +32,6 @@ function App() {
         }
 
         const json = await response.json();
-        console.log(json);
         dispatch(setSelectedCityWeather(json)); 
     } catch (error: unknown) {
       if(error instanceof Error) {
