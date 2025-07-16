@@ -3,31 +3,36 @@ import cloud from '../../assets/cloud.svg';
 import { setSelectedCityWeather } from '../../redux/state/weatherSlice';
 import { useState } from 'react';
 
-function getUserLocation() {
-  return new Promise<{ lat: number | null, lon: number | null }>((resolve, reject) => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
-          resolve({ lat, lon });
-        },
-        (error) => {
-          reject(new Error('Error occurred while fetching location'));
-        }
-      );
-    } else {
-      reject(new Error('Geolocation is not supported by this browser.'));
-    }
-  });
-}
+
 
 function NoState() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [buttonText, setButtonText] = useState("Search by my location");
+
   const dispatch = useDispatch();
 
+  function getUserLocation() {
+    return new Promise<{ lat: number | null, lon: number | null }>((resolve, reject) => {
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            resolve({ lat, lon });
+          },
+          (error) => {
+            setButtonText("Not supported")
+            reject(new Error('Error occurred while fetching location'));
+          }
+        );
+      } else {
+        setButtonText("Not supported")
+        reject(new Error('Geolocation is not supported by this browser.'));
+      }
+    });
+  }
+
   async function fetchData() {
-    setIsLoading(true)
+    setButtonText("Loading...");
     const apiKey = import.meta.env.VITE_API_KEY;
 
     try {
@@ -43,6 +48,7 @@ function NoState() {
 
       const response = await fetch(url);
       if (!response.ok) {
+        setButtonText("Couldn't find city")
         throw new Error('Error: Couldnt find city.');
       }
 
@@ -51,11 +57,12 @@ function NoState() {
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.error(error.message);
+        setButtonText("Not supported")
       } else {
         console.error('Unknown error occurred.');
+        setButtonText("Not supported")
       }
     }
-    setIsLoading(false);
   }
 
   return (
@@ -63,10 +70,7 @@ function NoState() {
       <img src={cloud} alt="" />
       <h2>No city selected</h2>
       <p>Start typing a city name to view the weather forecast.</p>
-      {isLoading ?
-        <p>Loading...</p> :
-        <button onClick={fetchData}>Search by my location</button>  
-      }
+      <button onClick={fetchData}>{buttonText}</button>  
     </div>
   );
 }
