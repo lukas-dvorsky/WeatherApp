@@ -21,7 +21,7 @@ function DaySelectionButton({dayName, listIndex, buttonIndex, selected = false, 
     }
 
     return (
-        <button className={`${selected && 'selected'}`} onClick={() => handleClick()}>
+        <button className={`${selected ? 'selected' : ''}`} onClick={() => handleClick()}>
             {dayName}
         </button>
     )

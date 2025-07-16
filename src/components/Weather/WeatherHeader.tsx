@@ -18,9 +18,6 @@ function WeatherHeader({data, style}: Props) {
         <span className='city-name'>{data.city.name}</span>
         <div className='temperature-container'>
           <p>{data.list[selectedIndex].main.temp}°</p>
-          <img src={`https://openweathermap.org/img/wn/${data.list[selectedIndex].weather[0].icon}@2x.png`}
-                alt={data.list[selectedIndex].weather[0].description}
-          />
         </div>
         <span>{data.list[selectedIndex].weather[0].main}</span>
     </div>
