@@ -4,8 +4,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    padding: 5rem 0 2rem 0;
+    width: 100vh;
+    padding: 5rem 0rem 2rem 0;
     color: $jet;
 
     &.thunderstorm {
@@ -73,6 +73,7 @@
         width: min-content;
         height: 100vh;
         position: absolute;
+        padding: 0 0 0 2rem;
         left: 0;
         top:0;
         justify-content: center;
@@ -131,7 +132,7 @@
             }
         }
 
-        img {
+/*         img {
             z-index: 1;
             position: absolute;
             right: -2rem;
@@ -140,39 +141,36 @@
             @include respond(xl) {
                 bottom: 12rem;
             }
-        }
+        } */
     }
 }
 
 .weather-grid {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-
+    width: 100%;
+    
     @include respond(sm) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
     }
 
     @include respond(xl) {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        width: 75vw;
+        width: 70vw;
         margin-left: 25vw;
-        margin-top: 8rem;
+        margin-top: 6rem;
         border-radius: 5px;
-        max-height: 75vh;
     }
 
     .full-width {
         grid-column: span 2;
 
         @include respond(xl) {
-            grid-column: span 1;
+            grid-column: span 5;
             grid-row: span 2;
-            padding: 2rem;
         }
 
     }
@@ -185,6 +183,7 @@
         width: 80vw;
         margin: auto;
         color: $jet;
+        padding: 2rem 0rem;
 
         @include respond(sm) {
             width: 100%;
@@ -201,7 +200,7 @@
         }
 
         @include respond(xl) {
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
 
         h3 {
@@ -223,7 +222,8 @@
             }
 
             @include respond(xl) {
-                font-size: 1.8rem;
+                font-size: 1.2rem;
+                margin-bottom: 0.4rem;
             }
         }
 

@@ -20,16 +20,9 @@ export interface WeatherDataMain {
     pressure: number
     sea_level: number
     temp: number
+    temp_kf: number
     temp_max: number
     temp_min: number
-}
-
-export interface WeatherDataSys {
-    country: string
-    id: number
-    sunrise: number
-    sunset: number
-    type: number
 }
 
 export interface WeatherDataWeather {
@@ -45,21 +38,35 @@ export interface WeatherDataWind {
     speed: number
 }
 
-export interface WeatherData {
-    base: string,
-    clouds: { all: number }
-    cod: number
+export interface WeatherDataCity {
     coord: Coords
-    dt: number
+    country: string
     id: number
-    main: WeatherDataMain
     name: string
-    sys: WeatherDataSys
+    population: number
+    sunrise: number
+    sunset: number
     timezone: number
+}
+
+export interface WeatherDataList {
+    clouds: { all: number }
+    dt: number
+    dt_txt: string
+    main: WeatherDataMain
+    pop: number
+    rain: { "3h": number }
+    sys: { pod: string }
     visibility: number
     weather: WeatherDataWeather[]
-    length: number
     wind: WeatherDataWind
+}
+
+export interface WeatherData {
+    city: WeatherDataCity
+    cnt: number
+    cod: string
+    list: WeatherDataList[]
 }
 
 export interface WeatherItem {

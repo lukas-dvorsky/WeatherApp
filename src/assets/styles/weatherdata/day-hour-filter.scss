@@ -1,0 +1,116 @@
+@import '../mixins.scss';
+@import '../colors.scss';
+
+.selection-container {
+
+    @include respond(xl) {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+}
+
+.day-selection-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-content: space-around;
+    align-content: stretch;
+    
+    button {
+        border: none;
+        outline: none;
+        color: $jet;
+        padding: 2rem 1.5rem;
+        background-color: rgba($jet, $alpha: 0.05);
+        font-weight: 700;
+        font-size: 1.1rem;
+
+        @include respond(md) {
+            font-size: 1.3rem;
+        }
+
+        @include respond(lg) {
+            padding: 2.3rem 1.8rem;
+        }
+
+        @include respond(xl) {
+            padding: 1.5rem;
+            background-color: rgba($jet, $alpha: 0.05);
+        }
+
+        &:hover {
+            background-color: rgba($jet, $alpha: 0.1);
+        }
+
+        &.selected, &.selected:hover {
+            font-size: 1.5rem;
+            background-color: rgba($primary, $alpha: 0.3);
+
+            @include respond(md) {
+                font-size: 1.8rem;
+            }
+        }
+
+    }
+}
+
+.hour-selection-container {
+    display: flex;
+    overflow-x: scroll;
+    justify-content: center;
+    width: 100vw;
+    background-color: rgba($jet, $alpha: 0.1);
+
+    @include respond(xl) {
+        width: 100%;
+
+    }
+    button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        outline: none;
+        border: none;
+        color: $jet;
+        position: relative;
+        padding: 3rem 2rem 1rem 2rem;
+        background-color: transparent;
+
+        .day {
+            color: rgba($jet, $alpha: 0.1);
+            position: absolute;
+            font-size: 3rem;
+            font-weight: 900;
+            top:0;
+            left: 0.8rem;
+        }
+
+        .temp {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: $jet;
+        }
+
+        .time {
+            font-size: 1rem;
+        }
+
+        &:hover {
+            background-color: rgba($jet, $alpha: 0.2);
+        }
+
+        &.selected, &.selected:hover {
+            background-color: rgba($primary, $alpha: 0.4);
+
+            .day {
+                color: rgba($jet, $alpha: 0.2);
+            }
+        }
+
+        img {
+            width: 5rem;
+        }
+    }
+}

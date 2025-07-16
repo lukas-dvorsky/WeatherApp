@@ -22,8 +22,7 @@ function App() {
 
     const cityName = city.name;
     const countryCode = city.country;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${apiKey}&units=metric`;
-
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${countryCode}&appid=${apiKey}&units=metric`;
     try {
       if(!apiKey) {throw new Error("API key is missing")}
         
@@ -33,6 +32,7 @@ function App() {
         }
 
         const json = await response.json();
+        console.log(json);
         dispatch(setSelectedCityWeather(json)); 
     } catch (error: unknown) {
       if(error instanceof Error) {
