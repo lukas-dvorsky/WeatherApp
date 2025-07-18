@@ -10,18 +10,18 @@ Weather app allows users to search for cities and view realtime weather informat
 
 ## Technologies
 ### Development
-Vite
-TypeScript
-React
-Redux
+Vite  
+TypeScript  
+React  
+Redux  
 
 ### Styling
 Sass
 
 ## Supported browsers
-Mozilla Firefox
-Google Chrome
-Microsoft Edge
+Mozilla Firefox  
+Google Chrome  
+Microsoft Edge  
 
 
 ## Description
