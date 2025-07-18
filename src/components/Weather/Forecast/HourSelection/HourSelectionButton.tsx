@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { setSelectedListIndex } from '../../../../redux/state/weatherSlice'
 import type { WeatherDataList } from '../../../../utils/types'
-import { getDayNames } from '../../../../utils/functions'
+import { getDayNames, getLocaleTime } from '../../../../utils/functions'
 
 interface Props {
   list: WeatherDataList
@@ -19,6 +19,8 @@ function HourSelectionButton({list, listIndex, buttonIndex, selected = false, se
       setSelected !== undefined && setSelected(buttonIndex)
   }
 
+  const time: string = getLocaleTime(list.dt_txt)
+
   return (
     <button className={`${selected ? 'selected' : ''}`} onClick={() => handleClick()}>
       <p className='day'>{getDayNames(list, listIndex)}</p>
@@ -26,7 +28,7 @@ function HourSelectionButton({list, listIndex, buttonIndex, selected = false, se
         alt={list.weather[0].icon}
       />
       <p className='temp'>{list.main.temp}°</p>
-      <p className='time'>{list.dt_txt.split(' ')[1].slice(0,5)}</p>
+      <p className='time'>{time}</p>
     </button>
   )
 }

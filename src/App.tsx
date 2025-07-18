@@ -15,7 +15,6 @@ function App() {
   const dispatch = useDispatch()
 
   const selectedCityWeather = useSelector((state: RootState) => state.weather.setSelectedCityWeather)
-
   async function handleClick(city: City): Promise<void> {
     // api call
     const apiKey = import.meta.env.VITE_API_KEY
@@ -32,7 +31,6 @@ function App() {
         }
 
         const json = await response.json();
-        console.log(json);
         dispatch(setSelectedCityWeather(json)); 
     } catch (error: unknown) {
       if(error instanceof Error) {
