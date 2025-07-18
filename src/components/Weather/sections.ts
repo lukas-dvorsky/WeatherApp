@@ -3,7 +3,10 @@ import type { WeatherData, WeatherSectionProps } from "../../utils/types";
 // Get local time (hh:mm)
 function getTime(time: number) {
     const converted = new Date(time * 1000)
-    return `${converted.getHours()}:${converted.getMinutes()}`
+    return converted.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
 }
 
 // Create data for weather sections

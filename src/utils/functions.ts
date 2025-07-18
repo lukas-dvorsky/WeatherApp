@@ -1,5 +1,14 @@
 import type { WeatherDataList } from "./types";
 
+export function getLocaleTime(str: string) {
+    const date = new Date(str)
+    date.toLocaleString();
+    return date.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+}
+
 // Get all unique days indexes, save them for future use
 export function getUniqueDays(lists: WeatherDataList[]) {
     const unique: number[] = []

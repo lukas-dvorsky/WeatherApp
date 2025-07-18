@@ -19,13 +19,15 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     justify-content: space-around;
-    align-content: stretch;
+    max-width: 100vw;
     
     button {
         border: none;
         outline: none;
         color: $jet;
-        padding: 2rem 1.5rem;
+        padding: auto;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         background-color: rgba($jet, $alpha: 0.05);
         font-weight: 700;
         font-size: 1.1rem;
