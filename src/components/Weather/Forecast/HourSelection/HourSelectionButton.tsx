@@ -27,7 +27,7 @@ function HourSelectionButton({list, listIndex, buttonIndex, selected = false, se
       <img src={`https://openweathermap.org/img/wn/${list.weather[0].icon}@2x.png`}
         alt={list.weather[0].icon}
       />
-      <p className='temp'>{list.main.temp}°</p>
+      <p className='temp'>{Math.round(list.main.temp)}°</p>
       <p className='time'>{time}</p>
     </button>
   )
