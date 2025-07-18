@@ -17,7 +17,7 @@ function WeatherHeader({data, style}: Props) {
     <div className={`weather-header ${style ?? ''} ${weatherClass}`} >
         <span className='city-name'>{data.city.name}</span>
         <div className='temperature-container'>
-          <p>{data.list[selectedIndex].main.temp}°</p>
+          <p>{Math.round(data.list[selectedIndex].main.temp)}°</p>
         </div>
         <span>{data.list[selectedIndex].weather[0].main}</span>
     </div>
